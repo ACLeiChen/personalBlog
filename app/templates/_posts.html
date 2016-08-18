@@ -1,0 +1,83 @@
+{% for post in posts %}
+<article class="article the-font" style="box-shadow: rgb(167, 163, 163) 5px 5px 20px;">
+        <div class="post-content the-font">
+            <div>
+                <h2 style="color:#34495E"><b>{{ post.title }}</b></h2>
+            </div>
+                <!--<div>-->
+
+                        <!--<a href="{{ url_for('.user', username=post.author.username) }}" class="post-author post-inline">-->
+                            <!--by {{ post.author.username }}-->
+                        <!--</a>-->
+                        <!--&lt;!&ndash;<a href="{{ url_for('.user', username=post.author.username) }}" class="post-inline">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<img class="img-rounded" src="{{ post.author.gravatar(size=40) }}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--</div>-->
+            <div>
+                <small>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <span style="color:#8C8C8C;">{{ moment(post.timestamp).format("MMMM Do YYYY, HH:mm:ss") }} by </span>
+                    <a href="{{ url_for('.user', username=post.author.username) }}" class="post-author post-inline">
+                        {{ post.author.username }}
+                    </a>
+                </small>
+            </div>
+            <div class="post-alert">The blog is based on the Creative Commons public licenses. You can share and adapt under the following terms: Attribution, NonCommercial and ShareAlike</div>
+            <div class="post-summary" >
+                {% if post.summary_html %}
+                    {{ post.summary_html | markdown}}
+                {% else %}
+                    {{ post.summary }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div  style="border-top:1px solid #EBEBEB;">
+            <div class="post-inline">
+                <h3>
+                    <span class="label label-default">
+                        <span class="glyphicon glyphicon-tags" aria-hidden="true"> </span>
+                            {{ post.category.tag }}
+                        </span>
+                    </span>
+                </h3>
+            </div>
+            <div style="float:right;" class="post-inline">
+                {% if current_user == post.author %}
+                <a href="{{ url_for('.edit', id=post.id) }}" class="post-inline">
+                    <h3>
+                        <span class="label label-primary">Edit</span>
+                    </h3>
+                </a>
+                <a href="{{ url_for('.delete', id=post.id) }}" class="post-inline">
+                    <h3>
+                        <span class="label label-danger">Delete</span>
+                    </h3>
+                </a>
+                {% elif current_user.is_administrator() %}
+                <a href="{{ url_for('.edit', id=post.id) }}" class="post-inline">
+                    <h3>
+                        <span class="label label-danger">Edit [Admin]</span>
+                    </h3>
+                </a>
+                {% endif %}
+                <!--<a href="{{ url_for('.post', id=post.id) }}#comments" class="post-inline">-->
+                    <!--<h3>-->
+                        <!--<span class="label label-primary">{{ post.comments.count() }} Comments</span>-->
+                    <!--</h3>-->
+                <!--</a>-->
+                <a href="{{ url_for('.post', id=post.id) }}" class="post-inline">
+                    <h3>
+                        <span class="label label-default">
+                            <span class="glyphicon glyphicon-fire" aria-hidden="true">
+                            </span>
+                            More
+                        </span>
+                    </h3>
+                </a>
+            </div>
+        </div>
+</article>
+{% endfor %}
+
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Articles in one category{% endblock %}
+
+{% block page_content %}
+
+<h3>Posts in the category: {{ category.tag }}</h3>
+{% include '_posts.html' %}
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
+</div>
+{% endif %}
+{% endblock %}

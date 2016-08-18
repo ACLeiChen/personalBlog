@@ -1,0 +1,18 @@
+<div class="share mrl the-font" style="background-color:#FFF;box-shadow:5px 5px 20px #CCC;width:260px;">
+    <div style="padding:10px;">
+        <div style="padding:10px 10px;">
+            <h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> CATEGORY</h3>
+        </div>
+        <div class="list-group">
+            {% for category in categoriesSortByCount %}
+            <a href="{{ url_for('.category', tag=category.tag) }}" class="list-group-item">
+                <span style="font-size:15px;">{{ category.tag|upper }}</span>
+                <span class="badge text-right" style="float:right">{{ category.count }}</span>
+            </a>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Techblog{% endblock %}
+
+{% block jumbotron_area %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}! Have an idea?</h1>
+		<p class="lead">Let's share them!</p>
+		<a href="write"><button class="btn btn-primary btn-lg" role="button">Write >></button></a>
+	</div>
+</div>
+{% endblock%}
+
+{% block page_content %}
+
+
+
+<!--<div class="page-header">-->
+    <!--<h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>-->
+<!--</div>-->
+<!--<div>-->
+    <!--{% if current_user.can(Permission.WRITE_ARTICLES) %}-->
+    <!--{{ wtf.quick_form(form) }}-->
+    <!--{% endif %}-->
+<!--</div>-->
+<div class="post-tabs">
+    <ul class="nav nav-pills" >
+        <li{% if not show_followed %} class="active" style="color:#333" {% endif %}><a href="{{ url_for('.show_all') }}">All</a></li>
+        {% if current_user.is_authenticated %}
+        <li{% if show_followed %} class="active" style="color:#333" {% endif %}><a href="{{ url_for('.show_followed') }}">Followed</a></li>
+        {% endif %}
+    </ul>
+    <ul class="posts">
+        <div class="row">
+            <div class="col-md-9">
+                {% include '_posts.html' %}
+            </div>
+            <div class="col-md-3">
+                {% include '_categories.html' %}
+            </div>
+        </div>
+    </ul>
+</div>
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.index') }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

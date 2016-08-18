@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Write a blog!{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+    <h1>Hello, {{ current_user.username }}!</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="box-shadow:5px 5px 20px #CCC;background-color:white;padding:20px 30px;margin-bottom:40px;">
+                <h2 class="text-center">TO WRITE A BLOG!</h2>
+                <form class="form-horizontal" method="post" >
+                    {{ form.csrf_token }}
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">{{ form.title.label }}</label>
+                        <div class="col-sm-11">
+                            {{ form.title(class="form-control",placeholder="the title") }}
+                            {% for error in form.title.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">{{ form.body.label }}</label>
+                        <div class="col-sm-11">
+                            {{ form.body(class="form-control",placeholder="the main context") }}
+                            {% for error in form.body.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">{{ form.summary.label }}</label>
+                        <div class="col-sm-11">
+                            {{ form.summary(class="form-control",placeholder="the summary", rows=10) }}
+                            {% for error in form.summary.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">{{ form.category.label }}</label>
+
+                        <div class="col-sm-11">
+                            {{form.category}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.submit(value="Go", class="btn-large btn-block btn-primary") }}
+                    </div>
+                        <!--<input type="submit" value="Go" class="btn btn-large btn-block btn-primary">-->
+                </form>
+            </div>
+        </div>
+        <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            <strong>Heads up!</strong> This editor is based on Markdown syntax, for a newline, please type 2 spaces then 'enter', more can be show in
+            <a href="http://markdown-guide.readthedocs.io/en/latest/basics.html"><button type="button" class="btn btn-primary">Markdown guide >></button></a>.
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
