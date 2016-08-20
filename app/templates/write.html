@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label class="col-sm-1 control-label">{{ form.summary.label }}</label>
                         <div class="col-sm-11">
-                            {{ form.summary(class="form-control",placeholder="This part wil be shown in the home page, as the name indicates.", rows=10) }}
+                            {{ form.summary(class="form-control",placeholder="This part wil be shown in the home page, it should be a short summary as the name indicates.", rows=10) }}
                             {% for error in form.summary.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                             {% endfor %}
