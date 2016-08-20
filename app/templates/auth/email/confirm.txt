@@ -1,6 +1,8 @@
 Dear {{ user.username }},
 
-Welcome to Flasky!
+Welcome to MorphBlog!
+
+You can share your idea and learn fun knowledge here.
 
 To confirm your account please click on the following link:
 
@@ -8,6 +10,6 @@ To confirm your account please click on the following link:
 
 Sincerely,
 
-The Flasky Team
+Lei Chen
 
 Note: replies to this email address are not monitored.
