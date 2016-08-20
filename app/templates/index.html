@@ -7,8 +7,8 @@
 {% block jumbotron_area %}
 <div class="jumbotron">
 	<div class="container">
-		<h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}! Have an idea?</h1>
-		<p class="lead">Let's share it!</p>
+		<h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
+		<p class="lead">Have an idea? Let's share it!</p>
 		<a href="write"><button class="btn btn-primary btn-lg" role="button">Write >></button></a>
 	</div>
 </div>
