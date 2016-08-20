@@ -5,7 +5,9 @@
 {% block title %}MorphBlog - Post{% endblock %}
 
 {% block page_content %}
+{% for post in posts %}
 {% include '_singlePost.html' %}
+{% endfor %}
 
 <!--self-defined comment section-->
 

@@ -16,14 +16,7 @@
 
 {% block page_content %}
 
-<!--<div class="page-header">-->
-    <!--<h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>-->
-<!--</div>-->
-<!--<div>-->
-    <!--{% if current_user.can(Permission.WRITE_ARTICLES) %}-->
-    <!--{{ wtf.quick_form(form) }}-->
-    <!--{% endif %}-->
-<!--</div>-->
+
 <div class="post-tabs">
     <ul class="nav nav-pills" >
         <li{% if not show_followed %} class="active" style="color:#333" {% endif %}><a href="{{ url_for('.show_all') }}">All</a></li>
