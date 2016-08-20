@@ -25,7 +25,7 @@
             <div class="post-alert">The blog is based on the Creative Commons public licenses. You can share and adapt under the following terms: Attribution, NonCommercial and ShareAlike</div>
             <div class="post-summary" >
                 {% if post.summary_html %}
-                    {{ post.summary_html | markdown}}
+                    {{ post.summary_html | markdown | safe}}
                 {% else %}
                     {{ post.summary }}
                 {% endif %}
