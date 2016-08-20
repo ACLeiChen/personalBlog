@@ -2,12 +2,12 @@ from datetime import datetime
 import hashlib
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-# from flask.ext.markdown import Markdown
+# from flask_markdown import Markdown
 # from markdown import markdown
-from flask.ext.misaka import markdown
+from flask_misaka import markdown
 import bleach
 from flask import current_app, request
-from flask.ext.login import UserMixin, AnonymousUserMixin
+from flask_login import UserMixin, AnonymousUserMixin
 from . import db, login_manager
 
 

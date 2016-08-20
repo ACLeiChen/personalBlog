@@ -1,10 +1,10 @@
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms.validators import DataRequired, Length
 from wtforms import StringField, TextAreaField, BooleanField, SelectField, SubmitField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import Required, Length, Email, Regexp
 from wtforms import ValidationError
-from flask.ext.pagedown.fields import PageDownField
+from flask_pagedown.fields import PageDownField
 from ..models import Role, User, Category
 
 
