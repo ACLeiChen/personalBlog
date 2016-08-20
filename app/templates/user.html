@@ -46,11 +46,13 @@
             {% endif %}
         </p>
         <p>
-            <h4>The personal image is supported through
-                <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
-                Gravatar, check it out
-                <a class="label label-primary" href="https://en.gravatar.com/">Here</a>
-            </h4>
+            {% if current_user.is_authenticated and user == current_user %}
+                <h4>The personal image is supported through
+                    <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
+                    Gravatar, check it out
+                    <a class="label label-primary" href="https://en.gravatar.com/">Here</a>
+                </h4>
+            {% endif %}
         </p>
     </div>
 </div>

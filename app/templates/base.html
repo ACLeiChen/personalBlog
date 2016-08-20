@@ -13,13 +13,10 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 
 
-
 {{ pagedown.include_pagedown() }}
 {% endblock %}
 
-{% block body %}
 
-<body>
 
 {% block navbar %}
     <div class="navbar navbar-inverse" role="navigation">
@@ -64,22 +61,49 @@
 </div>
 {% endblock %}
 
-{% block jumbotron_area %}
-{% endblock%}
+
 
 {% block content %}
+    {% block jumbotron_area %}
+    {% endblock%}
+
     <div class="container">
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {% block page_content %}
+        {% endblock %}
     </div>
-    {% endfor %}
 
-    {% block page_content %}
-    {% endblock %}
-</div>
-
+    <div style="background:#384451 none repeat scroll 0% 0%;color:#eee">
+        <div class="container">
+            <div class="row" style="padding-top:30px;">
+                <div class="col-md-7">
+                    <div class="mastfoot">
+                        <p>Designed and built by <a href="https://twitter.com/mdo">@Lei Chen</a>.</p>
+                        <p >@server by <strong>Gunicorn</strong> deployed on <strong>Heroku</strong>.</p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div>
+                        <h5 style="margin-bottom:15px;margin-left:18px;"><strong>CONTACT ME</strong></h5>
+                        <ul>
+                            <li><a href="https://nl.linkedin.com/in/leichen-1992">LINKEDIN</li>
+                            <li><a href="https://github.com/ACLeiChen"></span>GITHUB</a></li>
+                            <li><a href="mailto:leichen_work@outlook.com">EMAIL:<strong>leichen_work@outlook.com</strong></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <p> <small>© COPYRIGHT BY MorphBlog 2016</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 
@@ -89,5 +113,4 @@
 {{ super() }}
 {{ moment.include_moment() }}
 {% endblock %}
-{% endblock %}
-</body>
+
