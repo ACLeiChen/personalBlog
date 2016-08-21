@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label class="col-sm-1 control-label">{{ form.body.label }}</label>
                         <div class="col-sm-11">
-                            {{ form.body(class="form-control",placeholder="This is the main context") }}
+                            {{ form.body(class="form-control",placeholder="This is the main context", rows=10) }}
                             {% for error in form.body.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                             {% endfor %}
@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label class="col-sm-1 control-label">{{ form.summary.label }}</label>
                         <div class="col-sm-11">
-                            {{ form.summary(class="form-control",placeholder="This part wil be shown in the home page, it should be a short summary as the name indicates.", rows=10) }}
+                            {{ form.summary(class="form-control",placeholder="This part wil be shown in the home page, it should be a short summary as the name indicates.", rows=5) }}
                             {% for error in form.summary.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                             {% endfor %}
