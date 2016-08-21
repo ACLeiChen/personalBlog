@@ -304,7 +304,7 @@ class Post(db.Model):
     def on_changed_body(target, value, oldvalue, initiator):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
                         'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                        'h1', 'h2', 'h3', 'p', 'img', 'figure', 'src', 'class', 'br']
+                        'h1', 'h2', 'h3', 'p', 'img', 'figure', 'src', 'class', 'br', 'hr']
         allowed_attrs = {'*': ['class'],
                          'a': ['href', 'rel'],
                          'img': ['src', 'alt']}
@@ -316,7 +316,7 @@ class Post(db.Model):
     @staticmethod
     def on_changed_summary(target, value, oldvalue, initiator):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'code', 'blockquote', 'em', 'i',
-                        'strong', 'li', 'ol', 'pre', 'strong', 'ul', 'h1', 'h2', 'h3', 'p']
+                        'strong', 'li', 'ol', 'pre', 'strong', 'ul', 'h1', 'h2', 'h3', 'p', 'hr']
         target.summary_html = bleach.linkify(bleach.clean(
             markdown(value, output_format='html'),
             tags=allowed_tags, strip=True)
